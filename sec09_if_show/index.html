@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <div id="app">
+
+      <!-- v-if : 초기 조건이 거짓인 경우 아무것도 하지 않음 >> 런타임 시 조건이 바뀌지 않으면 권장 -->
+      <div>{{number}}</div>
+      <template v-if="number==1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+      </template>
+      <div v-else-if="number==2">Hi</div>
+      <div v-else>No</div>
+      <button type="button" name="button" @click="increaseNumber">increase</button>
+
+      <!-- v-show : css 기반 토글만으로 초기 조건에 관계 없이 엘리먼트가 항상 렌더링 됨 -->
+      <div v-show="show">Yes</div>
+      <!-- show가 false일 경우 style : display가 none으로 렌더링  -->
+      <button type="button" name="button" @click="toggle">toggle</button>
+
+
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data : {
+          show : true,
+          number : 1
+        },
+        methods : {
+          increaseNumber : function() {
+            this.number++;
+          },
+
+          toggle : function() {
+            this.show = !this.show;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

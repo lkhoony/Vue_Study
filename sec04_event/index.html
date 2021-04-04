@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <!-- vue 인스턴스 생성 -->
+    <div id="app">
+      {{ year }}
+      <!-- year가 바로 업데이트됨 -->
+      <button type="button" v-on:click="plus">더하기</button>
+      <button type="button" v-on:click="minus">빼기</button>
+
+      <form v-on:submit="submit">
+        <input type="text" name="" value="">
+        <button type="submit">Submit</button>
+      </form>
+
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data : {
+          year  : 2020
+        },
+        methods : {
+          plus() {
+            this.year++;
+          },
+          minus() {
+            this.year--;
+          },
+          submit() {
+            alert("submitted");
+            console.log("hello");
+          }
+        }
+
+      });
+    </script>
+  </body>
+</html>

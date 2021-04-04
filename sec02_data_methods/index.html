@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <!-- vue 인스턴스 생성 -->
+    <div id="app">
+      {{ nextYear("안녕하세요") }}
+    </div>
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data : {
+          person : {
+            name : '코디 코더',
+            age : 26
+          }
+        },
+        methods : {
+          nextYear : function(greeting) {
+            // this.data.person.name할 필요 없이 vue에서는 this에서 바로 사용가능
+            return greeting + '! ' + this.person.name + '는 내년에 ' + (this.person.age+1) + "살 입니다.";
+          },
+          otherMethod : function(){
+            // method도 마찬가지로 this.nextYear()로 사용 가능
+            this.nextYear();
+          }
+        }
+
+      });
+    </script>
+  </body>
+</html>

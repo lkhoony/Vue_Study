@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <head>
+      <meta charset="utf-8">
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <title>뷰 기초 익히기</title>
+    </head>
+  </head>
+  <body>
+    <div id="app">
+      {{ name }} <br>
+      <button type="button" name="button" @click="updateName">Click</button>
+    </div>
+    <div id="app-1">
+      {{ name }} <br>
+      <button type="button" name="button" @click="updateName">Click</button>
+    </div>
+    <script type="text/javascript">
+    // 각 변수에 vue instance를 대입하여 app에서 버튼을 눌렀을 때 app1의 이름을 바꾸게 할 수 있음
+      const app = new Vue({
+        el : '#app',
+        data : {
+          name : "instance1"
+        },
+        methods : {
+          updateName : function(){
+            app1.name = 'instance2 updated';
+          }
+        }
+      });
+
+      const app1 = new Vue({
+        el : '#app-1',
+        data : {
+          name : "instance2"
+        },
+        methods : {
+          updateName : function() {
+            app.name = 'instance1 updated';
+          }
+        }
+      });
+
+    </script>
+  </body>
+</html>

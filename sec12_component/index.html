@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <head>
+      <meta charset="utf-8">
+      <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+      <title>뷰 기초 익히기</title>
+    </head>
+  </head>
+  <body>
+    <div id="app">
+      <!-- {{ name }} <br>
+      <button type="button" name="button" @click="updateName">Click</button> -->
+      <component-button></component-button>
+    </div>
+    <div id="app-1">
+      <!-- {{ name }} <br>
+      <button type="button" name="button" @click="updateName">Click</button> -->
+      <local-button></local-button>
+    </div>
+    <script type="text/javascript">
+
+      // 컴포넌트 정의 ( 전역 컴포넌트 )
+      Vue.component('component-button',{
+        // component-button안에 들어갈 template를 설정
+        template : `
+        <div>
+          {{ name }}<br>
+          <button @click="updateName">Click</button>
+        </div>`,
+
+        // Object는 참조타입으로 리턴하기 떄문에 컴포넌트가 사용된 모든 곳에서 같은 객체를 참조 >> 한 곳이 바뀌면 다른 곳도 업데이트
+        // 따라서 data부분은 아래와 같이 작성
+        data() {
+          return {
+            name : 'hello'
+          }
+        },
+
+        methods : {
+          updateName() {
+            this.name = 'updated';
+          }
+        }
+      });
+
+      // 컴포넌트 정의( 지역 컴포넌트 )
+      const localCom = {
+
+        template : `
+        <div>
+          {{ name }}<br>
+          <button @click="updateName">Click</button>
+        </div>`,
+
+        data() {
+          return {
+            name : 'hello'
+          }
+        },
+
+        methods : {
+          updateName() {
+            this.name = 'updated';
+          }
+        }
+      }
+
+      const app = new Vue({
+        el : '#app',
+        // data : {
+        //   name : "instance1"
+        // },
+        // methods : {
+        //   updateName : function(){
+        //     app1.name = 'instance2 updated';
+        //   }
+        // }
+      });
+
+      const app1 = new Vue({
+        el : '#app-1',
+        // data : {
+        //   name : "instance2"
+        // },
+        // methods : {
+        //   updateName : function() {
+        //     app.name = 'instance1 updated';
+        //   }
+        // }
+
+        // # local components
+        components : {
+          'local-button' : localCom
+        }
+      });
+
+    </script>
+  </body>
+</html>
