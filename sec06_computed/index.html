@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-on: = @ -->
+      <button type="button" name="button" @click="changeMessage">changeMessage</button>
+      <!-- message가 바뀌어도 computed속성이 catch하여 반영함 -->
+      {{ reversedMessage }}
+      {{ reversedMessage }}
+      {{ reversedMessage }}
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+
+      new Vue({
+        el : '#app',
+        data : {
+          message : "헬로우"
+        },
+        methods : {
+          // # method에 입력될 경우 {{}} 안의 내용을 reversedMessage()로 작성해야 함
+          // reversedMessage() {
+          //   return this.message.split('').reverse().join('')
+          // }
+          changeMessage() {
+            this.message = '안녕하세요';
+          }
+
+        },
+        // # method와의 차이
+        // method의 경우 {{}}안에서 불러와 질 때 계산을 하지만 computed는 미리 계산되어 있는 것을 사용(캐싱) >> 복잡한 로직일 경우 사용
+        computed : {
+          reversedMessage() {
+            return this.message.split('').reverse().join('')
+          }
+        }
+
+      });
+    </script>
+  </body>
+</html>

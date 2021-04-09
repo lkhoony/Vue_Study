@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class=""> {{ people[0].name }} {{ people[0].age }} </div>
+      <div class=""> {{ people[1].name }} {{ people[1].age }} </div>
+      <div class=""> {{ people[2].name }} {{ people[2].age }} </div>
+      <div class=""> {{ people[3].name }} {{ people[3].age }} </div>
+
+      <hr>
+
+      <!-- v-for에 key를 추가하는 것이 좋음  -->
+      <div v-for="(person, index) in people" :key="person.id">
+        {{ person.name }} {{ person.age }} {{ index }}
+      </div>
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data : {
+          people : [
+            { id : 1, name : 'a' , age : 20 },
+            { id : 2, name : 'b' , age : 21 },
+            { id : 3, name : 'c' , age : 22 },
+            { id : 4, name : 'd' , age : 23 },
+            { id : 5, name : 'e' , age : 24 },
+            { id : 6, name : 'e' , age : 25 }
+          ]
+        },
+        methods : {
+        }
+      });
+    </script>
+  </body>
+</html>

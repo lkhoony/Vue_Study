@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-on: = @ -->
+      <div class="">{{message}}</div>
+      <button type="button" name="button" @click="changeMessage">changeMessage</button>
+      <div class="">{{updated}}</div>
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+
+      new Vue({
+        el : '#app',
+        data : {
+          message : "헬로우",
+          updated : "아니요"
+        },
+        methods : {
+          changeMessage() {
+            this.message = '안녕하세요';
+          }
+
+        },
+        computed : {
+          reversedMessage() {
+            return this.message.split('').reverse().join('')
+          }
+        },
+        // # watch : 데이터 변경을 관찰하고 이에 반응하는 속성
+        // 1. message()로 data의 값들을 함수이름으로 사용 가능
+        // watch : {
+        //   message(newVal, oldVal) {
+        //     console.log(newVal, oldVal);
+        //     this.updated = "예";
+        //   }
+        // }
+
+        // 2. message : function으로 사용
+        watch : {
+          message : function(newVal,oldVal){
+            console.log(newVal, oldVal);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

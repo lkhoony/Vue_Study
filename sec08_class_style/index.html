@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+    <style media="screen">
+      .red{
+        color : red;
+      }
+
+      .font-bold {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- isRed가 True일 경우 class에 red가 들어가게 됨 -->
+      <!-- class 이름에 '-'가 들어갈 경우 ''로 묶어줘야 함 -->
+      <div :class="{ red : isRed , 'font-bold' : isBold }">Hello</div>
+      <div :style="{ color : red,  fontSize : size}">Hello</div>
+      <button type="button" name="button" @click="update">Click</button>
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+
+      new Vue({
+        el : '#app',
+        data : {
+          isRed : false,
+          isBold : false,
+          red : 'red',
+          size : '30px'
+        },
+        methods : {
+          update() {
+            this.isRed = !this.isRed;
+            this.isBold = !this.isBold;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

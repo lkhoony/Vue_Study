@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>뷰 기초 익히기</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- default event prevent -->
+      <form v-on:submit.prevent="submit">
+        <!-- <input type="text" v-bind:value="text" v-on:keyup="updateText"><br> -->
+
+        <!-- v-model로 양방향 데이터 바인딩이 가능해짐 -->
+        <!-- 하지만 한글, 일본어 등을 처리할 때는 한 글자에 대한 입력이 끝나야 텍스트가 동기화 됨 -->
+        <input type="text" v-model="text"><br>
+        {{ text }} <br>
+        <button type="submit">Submit</button>
+      </form>
+
+    </div>
+    <!-- vue 인스턴스 생성 -->
+    <script type="text/javascript">
+      new Vue({
+        el : '#app',
+        data : {
+          year  : 2020,
+          text : 'text'
+        },
+        methods : {
+          plus() {
+            this.year++;
+          },
+          minus() {
+            this.year--;
+          },
+          submit() {
+            alert("submitted");
+            console.log("hello");
+          },
+          // updateText(event) {
+          //   this.text = event.target.value;
+          // }
+        }
+
+      });
+    </script>
+  </body>
+</html>
